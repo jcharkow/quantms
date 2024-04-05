@@ -1,0 +1,34 @@
+name: openswathassaygenerator
+description: Prepares the empirical library for OpenSwathWorkflow
+keywords:
+  - OpenMS
+  - DIA
+  - Library
+tools:
+  - OpenSwathAssayGenerator:
+      description: |
+        Prepares the empirical library for OpenSwathWorkflow
+      homepage: TODO
+      documentation: TODO
+input:
+  - empirical_library_in:
+      type: file
+      description: |
+        An empirical library
+      pattern: "*.pqp"
+output:
+  - empirical_library_out:
+      type: file
+      description: |
+        An empirical library prepared for OpenSwath analysis 
+      pattern: "*.pqp"
+  - log:
+      type: file
+      description: log file
+      pattern: "*.log"
+  - version:
+      type: file
+      description: File containing software version
+      pattern: "versions.yml"
+authors:
+  - "@jcharkow"

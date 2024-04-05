@@ -1,0 +1,34 @@
+name: openswathdecoygenerator
+description: Add decoys to the empirical library
+keywords:
+  - OpenMS
+  - DIA
+  - Library
+tools:
+  - OpenSwathDecoyGenerator:
+      description: |
+        Adds decoys to the empirical library
+      homepage: TODO
+      documentation: TODO
+input:
+  - empirical_library_in:
+      type: file
+      description: |
+        An empirical library
+      pattern: "*.pqp"
+output:
+  - empirical_library_out:
+      type: file
+      description: |
+        An empirical library with decoys added
+      pattern: "*.pqp"
+  - log:
+      type: file
+      description: log file
+      pattern: "*.log"
+  - version:
+      type: file
+      description: File containing software version
+      pattern: "versions.yml"
+authors:
+  - "@jcharkow"
