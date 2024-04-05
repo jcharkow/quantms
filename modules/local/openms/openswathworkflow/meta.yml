@@ -1,0 +1,50 @@
+name: openswathworkflow
+description: DIA Feature Detection, Quantification and Scoring
+keywords:
+  - DIA
+  - OpenMS
+tools:
+  - OpenSwathWorkflow:
+      description: |
+        The OpenSwathWorkflow is a tool for targeted data extraction and analysis of data independent acquisition (DIA) data. It consist of the following steps:  1. Chromatogram extraction 2. Feature Detection 3. Feature Scoring
+      homepage: https://abibuilder.cs.uni-tuebingen.de/archive/openms/Documentation/nightly/html/TOPP_OpenSwathWorkflow.html 
+      documentation: https://abibuilder.cs.uni-tuebingen.de/archive/openms/Documentation/nightly/html/TOPP_OpenSwathWorkflow.html
+input:
+  - mzml_file:
+      type: file
+      description: |
+        mzML file containing the raw data.
+      pattern: "*.mzML"
+  - emperical_library:
+      type: file
+      description: |
+        An empirical library in .pqp format.
+      pattern: "*.pqp"
+  - irt_linear:
+      type: file
+      description: |
+        Library used to perform linear iRT transformation.
+      pattern: "*.tsv"
+  - irt_nonlinear:
+      type: file
+      description: |
+        Library used to perform nonlinear iRT transformation.
+      pattern: "*.tsv"
+  - meta:
+      type: map
+      description: Groovy Map containing sample information
+output:
+  - out:
+      type: file
+      description: File containing the search results from OpenSwathWorkflow
+      pattern: "*.osw"
+  - log:
+      type: file
+      description: log file
+      pattern: "*.log"
+  - version:
+      type: file
+      description: File containing software version
+      pattern: "versions.yml"
+authors:
+  - "@jcharkow"
