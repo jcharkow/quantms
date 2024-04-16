@@ -57,7 +57,7 @@
                     "type": "string",
                     "description": "Proteomics data acquisition method",
                     "default": "dda",
-                    "enum": ["dda", "dia"],
+                    "enum": ["dda", "dia", "openswath"],
                     "fa_icon": "far fa-list-ol"
                 }
             }
@@ -953,6 +953,48 @@
                     "description": "Enable cross-run normalization between runs by diann.",
                     "default": true,
                     "fa_icon": "far fa-check-square"
+                }
+            },
+            "fa_icon": "fas fa-braille"
+        },
+        "OpenSwath": {
+            "title": "OpenSwathWorkflow",
+            "type": "object",
+            "description": "Settings for OpenSwathWorkflow - a software for targeted data extraction and quantification.",
+            "default": "",
+            "properties": {
+                "openswath_rt_extraction_window": {
+                    "type": "number",
+                    "description": "The RT extraction window for OpenSwathWorkflow",
+                    "default": 600.0,
+                    "fa_icon": "fas fa-filter"
+                },
+                "openswath_rt_normalization": {
+                    "type": "boolean",
+                    "description": "Enable RT normalization in OpenSwathWorkflow",
+                    "default": true,
+                    "fa_icon": "far fa-check-square"
+                },
+                "openswath_rt_normalization_factor": {
+                    "type": "number",
+                    "description": "The RT normalization factor for OpenSwathWorkflow",
+                    "default": 1.0,
+                    "fa_icon": "fas fa-filter"
+                },
+                "openswath_speclib": {
+                    "type": "string",
+                    "description": "The spectral library to use for OpenSwathWorkflow",
+                    "fa_icon": "fas fa-file",
+                    "help_text": "If passed, will use that spectral library to carry out the OpenSwathWorkflow search, instead of predicting one from the fasta file.",
+                    "hidden": false
+                },
+                "openswath_debug": {
+                    "type": "integer",
+                    "description": "Debug level",
+                    "default": 0,
+                    "fa_icon": "fas fa-bug",
+                    "enum": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                    "hidden": true
                 }
             },
             "fa_icon": "fas fa-braille"

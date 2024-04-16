@@ -34,7 +34,7 @@ input:
       type: map
       description: Groovy Map containing sample information
 output:
-  - out:
+  - osw_out:
       type: file
       description: File containing the search results from OpenSwathWorkflow
       pattern: "*.osw"

@@ -42,6 +42,7 @@ ch_multiqc_custom_methods_description = params.multiqc_methods_description ? fil
 include { TMT } from './tmt'
 include { LFQ } from './lfq'
 include { DIA } from './dia'
+include { OPENSWATH } from './openswath'
 include { PMULTIQC as SUMMARYPIPELINE } from '../modules/local/pmultiqc/main'
 include { DECOYDATABASE } from '../modules/local/openms/decoydatabase/main'
 
@@ -112,6 +113,7 @@ workflow QUANTMS {
     FILE_PREPARATION.out.results
             .branch {
                 dia: it[0].acquisition_method.contains("dia")
+                openswath: it[0].acquisition_method.contains("openswath")
                 iso: it[0].labelling_type.contains("tmt") || it[0].labelling_type.contains("itraq")
                 lfq: it[0].labelling_type.contains("label free")
             }
@@ -166,6 +168,7 @@ workflow QUANTMS {
     ch_msstats_in = ch_msstats_in.mix(DIA.out.msstats_in)
     ch_versions = ch_versions.mix(DIA.out.versions.ifEmpty(null))
 
+    OPENSWATH(ch_fileprep_result.openswath, CREATE_INPUT_CHANNEL.out.ch_expdesign, FILE_PREPARATION.out.statistics) 
 
     //
     // MODULE: Pipeline reporting
